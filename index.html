@@ -1,0 +1,781 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#080706" />
+    <title>LEBNENE — Authentic Lebanese Fine Dining</title>
+    <meta name="description" content="LEBNENE — Where Lebanon Meets the Plate. Authentic Lebanese cuisine elevated to a fine-dining experience." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              body:    ['"DM Sans"', 'sans-serif'],
+              display: ['"Instrument Serif"', 'serif'],
+            },
+          }
+        }
+      }
+    </script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+
+    <!-- ══════════════════════════════════════════════════════
+         LOADING SCREEN — minimal wordmark + progress line
+    ══════════════════════════════════════════════════════ -->
+    <div id="loading-screen">
+      <div class="ls-top">
+        <span class="ls-label" id="ls-label">Lebanese Fine Dining</span>
+        <span class="ls-top-right" id="ls-top-right">Est. 2008 &bull; Beirut</span>
+      </div>
+      <div class="ls-center">
+        <span class="ls-wordmark" id="ls-wordmark">LEBNENE</span>
+      </div>
+      <div class="ls-bottom">
+        <div class="ls-progress-wrap">
+          <div id="ls-bar" class="ls-progress-bar"></div>
+        </div>
+        <div class="ls-bottom-row">
+          <span class="ls-bottom-label" id="ls-bottom-label">Loading experience</span>
+          <span id="ls-counter" class="ls-counter">000</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         NAVBAR — floating pill
+    ══════════════════════════════════════════════════════ -->
+    <nav id="navbar" aria-label="Main navigation">
+      <div id="navbar-pill">
+        <a href="#hero" class="nav-logo" aria-label="LEBNENE home">
+          <span class="nav-logo-ring"></span>
+          <span class="nav-logo-inner">
+            <span class="nav-logo-text">LB</span>
+          </span>
+        </a>
+        <span class="nav-divider hidden sm:block"></span>
+        <a href="#hero"    data-nav="home"    class="nav-link hidden sm:inline-flex">Home</a>
+        <a href="#menu"    data-nav="menu"    class="nav-link hidden sm:inline-flex">Menu</a>
+        <a href="#story"   data-nav="story"   class="nav-link hidden sm:inline-flex">Our Story</a>
+        <a href="#gallery" data-nav="gallery" class="nav-link hidden sm:inline-flex">Gallery</a>
+        <span class="nav-divider hidden sm:block"></span>
+        <button id="hamburger" aria-label="Open menu" aria-expanded="false">
+          <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+        <button data-modal="reservation" class="nav-cta hidden sm:inline-flex">
+          <span class="nav-cta-glow"></span>
+          <span class="nav-cta-label">Reserve ↗</span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- ══════════════════════════════════════════════════════
+         MOBILE MENU OVERLAY
+    ══════════════════════════════════════════════════════ -->
+    <div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation menu">
+      <div class="mobile-menu-top">
+        <span class="mobile-menu-brand">LEBNENE</span>
+        <button id="mobile-menu-close" aria-label="Close menu">
+          <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+      <nav class="mobile-menu-nav">
+        <a href="#hero"    class="mobile-nav-item">Home</a>
+        <a href="#menu"    class="mobile-nav-item">Menu</a>
+        <a href="#story"   class="mobile-nav-item">Our Story</a>
+        <a href="#gallery" class="mobile-nav-item">Gallery</a>
+      </nav>
+      <div class="mobile-menu-bottom">
+        <button data-modal="reservation" class="btn-primary mobile-cta">Reserve a Table ↗</button>
+        <div class="mobile-contact">
+          <a href="tel:+12125550193">+1 (212) 555-0193</a>
+          <a href="mailto:reserve@lebnene.com">reserve@lebnene.com</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         HERO — A: 100vh landing panel
+    ══════════════════════════════════════════════════════ -->
+    <section id="hero" class="hero-standalone">
+      <div class="hero-inner">
+        <span class="hero-eyebrow blur-in">Est. 2008 &nbsp;&bull;&nbsp; Beirut</span>
+        <h1 class="hero-title" aria-label="LEBNENE">
+          <span class="hero-letter">L</span><span class="hero-letter">E</span><span class="hero-letter">B</span><span class="hero-letter">N</span><span class="hero-letter">E</span><span class="hero-letter">N</span><span class="hero-letter">E</span>
+        </h1>
+        <p class="hero-sub blur-in">
+          <em id="hero-role" class="hero-role">Authentic</em>&nbsp;Lebanese cuisine, elevated.
+        </p>
+        <p class="hero-desc blur-in">
+          A journey through mezze, grill, and the art of gathering&nbsp;&mdash;&nbsp;from Beirut to your table.
+        </p>
+        <div class="hero-ctas blur-in">
+          <button data-modal="full-menu" class="btn-primary">Explore Menu</button>
+          <button data-modal="reservation" class="btn-ghost">Reserve a Table</button>
+        </div>
+      </div>
+      <div class="hero-scroll blur-in" aria-hidden="true">
+        <span class="hero-scroll-label">Scroll</span>
+        <div class="hero-scroll-track">
+          <div class="hero-scroll-fill accent-gradient"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- B: Fixed canvas + overlay -->
+    <div id="hero-canvas-wrap" aria-hidden="true">
+      <canvas id="hero-canvas"></canvas>
+      <div id="hero-dark-overlay"></div>
+    </div>
+
+    <!-- C: 260vh scroll driver (canvas + text sections) -->
+    <div id="hero-scroll-container" aria-hidden="true">
+
+      <div class="hs-section hs-section--left" data-enter="8" data-leave="53" data-animation="slide-left">
+        <div class="hs-section__inner">
+          <span class="hs-label">001 &nbsp;/&nbsp; The Craft</span>
+          <h2 class="hs-heading">Every bite,<br>a story.</h2>
+          <p class="hs-body">Slow-cooked, fire-grilled, hand-pressed &mdash; each dish carries the memory of Beirut through smoke and spice.</p>
+        </div>
+      </div>
+
+      <div class="hs-marquee-wrap" data-enter="47" data-leave="69">
+        <p class="hs-marquee-text">TASTE&nbsp;LEBANON&nbsp;&bull;&nbsp; EVERY&nbsp;BITE&nbsp;A&nbsp;STORY&nbsp;&bull;&nbsp; TASTE&nbsp;LEBANON&nbsp;&bull;&nbsp; EVERY&nbsp;BITE&nbsp;A&nbsp;STORY&nbsp;&bull;&nbsp; TASTE&nbsp;LEBANON&nbsp;&bull;&nbsp; EVERY&nbsp;BITE&nbsp;A&nbsp;STORY&nbsp;&bull;&nbsp;</p>
+      </div>
+
+      <div class="hs-section hs-section--right" data-enter="56" data-leave="97" data-animation="slide-right">
+        <div class="hs-section__inner">
+          <span class="hs-label">002 &nbsp;/&nbsp; The Table</span>
+          <h2 class="hs-heading">Gather<br>here.</h2>
+          <p class="hs-body">Reserve your place at LEBNENE &mdash; where strangers become family over mezze, grill, and fire.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         FEATURED MENU — editorial bento: 1 hero + 3 equal
+    ══════════════════════════════════════════════════════ -->
+    <section id="menu" class="section">
+      <div class="container">
+
+        <div class="section-header">
+          <div>
+            <div class="eyebrow-row">
+              <span class="eyebrow-line"></span>
+              <span class="eyebrow-text">Signature Dishes</span>
+            </div>
+            <h2 class="section-heading">Featured <em>Menu</em></h2>
+            <p class="section-sub">A curated selection of dishes that define the LEBNENE experience — timeless classics reimagined.</p>
+          </div>
+          <button data-modal="full-menu" class="btn-outline btn-sm hidden md:inline-flex">
+            <span class="btn-outline-glow"></span>
+            <span>Full Menu ↗</span>
+          </button>
+        </div>
+
+        <!-- Bento: full-width hero card, then 3 equal -->
+        <div class="menu-grid">
+
+          <!-- Hero card: Kibbeh Royale -->
+          <div class="menu-card menu-card--hero group" data-dish="kibbeh-royale">
+            <div class="menu-card-img-wrap">
+              <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=1400&q=80&auto=format&fit=crop"
+                   alt="Kibbeh Royale — lamb and pine nut croquettes"
+                   class="parallax-img menu-card-img" loading="lazy" />
+            </div>
+            <div class="menu-card-overlay"></div>
+            <div class="menu-card-hover">
+              <span class="menu-card-hover-pill">View &mdash; <em>Kibbeh Royale</em></span>
+            </div>
+            <div class="menu-card-info">
+              <div class="menu-card-info-inner">
+                <div>
+                  <p class="menu-card-cat">Signature &middot; Lamb</p>
+                  <h3 class="menu-card-name">Kibbeh Royale</h3>
+                  <p class="menu-card-desc">Lamb &amp; pine nut croquettes, pomegranate reduction</p>
+                </div>
+                <span class="menu-card-price">$28</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Fattoush Garden -->
+          <div class="menu-card menu-card--sm group" data-dish="fattoush-garden">
+            <div class="menu-card-img-wrap">
+              <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=700&q=80&auto=format&fit=crop"
+                   alt="Fattoush Garden salad with heirloom tomatoes"
+                   class="parallax-img menu-card-img" loading="lazy" />
+            </div>
+            <div class="menu-card-overlay"></div>
+            <div class="menu-card-hover">
+              <span class="menu-card-hover-pill">View &mdash; <em>Fattoush Garden</em></span>
+            </div>
+            <div class="menu-card-info">
+              <div class="menu-card-info-inner">
+                <div>
+                  <p class="menu-card-cat">Mezze &middot; Fresh</p>
+                  <h3 class="menu-card-name">Fattoush Garden</h3>
+                  <p class="menu-card-desc">Heirloom tomatoes, sumac, crispy pita</p>
+                </div>
+                <span class="menu-card-price">$16</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mixed Grill -->
+          <div class="menu-card menu-card--sm group" data-dish="mixed-grill">
+            <div class="menu-card-img-wrap">
+              <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=700&q=80&auto=format&fit=crop"
+                   alt="Mixed Grill — kafta, shish taouk, lamb chops"
+                   class="parallax-img menu-card-img" loading="lazy" />
+            </div>
+            <div class="menu-card-overlay"></div>
+            <div class="menu-card-hover">
+              <span class="menu-card-hover-pill">View &mdash; <em>Mixed Grill</em></span>
+            </div>
+            <div class="menu-card-info">
+              <div class="menu-card-info-inner">
+                <div>
+                  <p class="menu-card-cat">Grill &middot; Charcoal</p>
+                  <h3 class="menu-card-name">Mixed Grill</h3>
+                  <p class="menu-card-desc">Kafta, shish taouk, lamb chops, garlic sauce</p>
+                </div>
+                <span class="menu-card-price">$52</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Kunāfa Cream -->
+          <div class="menu-card menu-card--sm group" data-dish="kunafa-cream">
+            <div class="menu-card-img-wrap">
+              <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=900&q=80&auto=format&fit=crop"
+                   alt="Kunāfa Cream — shredded pastry with clotted cream"
+                   class="parallax-img menu-card-img" loading="lazy" />
+            </div>
+            <div class="menu-card-overlay"></div>
+            <div class="menu-card-hover">
+              <span class="menu-card-hover-pill">View &mdash; <em>Kunāfa Cream</em></span>
+            </div>
+            <div class="menu-card-info">
+              <div class="menu-card-info-inner">
+                <div>
+                  <p class="menu-card-cat">Dessert &middot; Signature</p>
+                  <h3 class="menu-card-name">Kunāfa Cream</h3>
+                  <p class="menu-card-desc">Shredded pastry, clotted cream, orange blossom syrup</p>
+                </div>
+                <span class="menu-card-price">$18</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+         OUR STORY — editorial 2-column with numbered points
+    ══════════════════════════════════════════════════════ -->
+    <section id="story" class="section">
+      <div class="container">
+
+        <div class="section-header">
+          <div>
+            <div class="eyebrow-row">
+              <span class="eyebrow-line"></span>
+              <span class="eyebrow-text">About Us</span>
+            </div>
+            <h2 class="section-heading">Our <em>Story</em></h2>
+            <p class="section-sub">Rooted in Lebanese tradition, grown through love and craftsmanship since 2008.</p>
+          </div>
+          <a href="#gallery" class="btn-outline btn-sm hidden md:inline-flex">
+            <span class="btn-outline-glow"></span>
+            <span>See Gallery ↗</span>
+          </a>
+        </div>
+
+        <!-- Editorial grid: left statement + right numbered points -->
+        <div class="story-grid">
+
+          <!-- Left: brand statement + photo -->
+          <div class="story-left">
+            <blockquote class="story-quote">
+              "From a family table in Hamra, Beirut — to a dining room the world now travels to."
+            </blockquote>
+            <div class="story-origin">
+              <span>Est. 2008</span>
+              <span class="story-origin-dot">&middot;</span>
+              <span>Beirut &rarr; World</span>
+            </div>
+            <div class="story-img-wrap">
+              <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80&auto=format&fit=crop"
+                   alt="LEBNENE restaurant dining room"
+                   class="story-img" loading="lazy" />
+            </div>
+          </div>
+
+          <!-- Right: four numbered story points -->
+          <div class="story-right">
+
+            <div class="story-point">
+              <span class="story-num">01</span>
+              <div class="story-point-body">
+                <p class="story-point-meta">Founded 2008 &middot; Beirut &rarr; World</p>
+                <h3 class="story-point-title">A Family's Dream, A City's Heritage</h3>
+                <p class="story-point-desc">What began as a family table in Hamra has grown into a restaurant celebrated for keeping Lebanese culinary traditions alive with modern elegance.</p>
+              </div>
+            </div>
+
+            <div class="story-point">
+              <span class="story-num">02</span>
+              <div class="story-point-body">
+                <p class="story-point-meta">Executive Chef &middot; Nour Khalil</p>
+                <h3 class="story-point-title">Trained in Beirut &amp; Lyon</h3>
+                <p class="story-point-desc">Chef Nour bridges classical French technique with the soul of Lebanese cooking — sumac, za'atar, and seven spices reimagined for the modern palate.</p>
+              </div>
+            </div>
+
+            <div class="story-point">
+              <span class="story-num">03</span>
+              <div class="story-point-body">
+                <p class="story-point-meta">Sourcing &middot; Bekaa Valley</p>
+                <h3 class="story-point-title">Imported Spices, Local Produce</h3>
+                <p class="story-point-desc">We import spice blends directly from the Bekaa Valley while sourcing vegetables and dairy from local farms within 50 miles. Zero compromise on quality.</p>
+              </div>
+            </div>
+
+            <div class="story-point story-point--last">
+              <span class="story-num">04</span>
+              <div class="story-point-body">
+                <p class="story-point-meta">Recognition &middot; Awards</p>
+                <h3 class="story-point-title">Michelin Bib Gourmand 2023–2024</h3>
+                <p class="story-point-desc">Recognised for exceptional quality and outstanding value. Featured in Time Out, Condé Nast Traveller, and Gourmet Magazine Arabia.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+         GALLERY — parallax two-column with lightbox
+    ══════════════════════════════════════════════════════ -->
+    <section id="gallery" class="gallery-section">
+
+      <!-- Pinned title panel -->
+      <div id="gallery-pin" class="gallery-pin">
+        <div class="eyebrow-row eyebrow-row--center">
+          <span class="eyebrow-line"></span>
+          <span class="eyebrow-text">Gallery</span>
+          <span class="eyebrow-line"></span>
+        </div>
+        <h2 class="section-heading gallery-heading">Visual <em>Experience</em></h2>
+        <p class="section-sub gallery-sub">A glimpse into our world — the dishes, the space, the people behind LEBNENE.</p>
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="btn-outline btn-sm gallery-ig">
+          <span class="btn-outline-glow"></span>
+          <span class="gallery-ig-inner">
+            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            @lebnene.restaurant
+          </span>
+        </a>
+      </div>
+
+      <!-- Parallax columns -->
+      <div id="gallery-parallax" class="gallery-parallax" aria-hidden="true">
+        <div class="gallery-columns">
+
+          <div id="gallery-col-left" class="gallery-col">
+            <div class="gallery-item" data-label="Mezze Spread">
+              <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=600&q=80&auto=format&fit=crop" alt="Mezze Spread" class="parallax-img gallery-img" loading="lazy" />
+              <div class="gallery-item-overlay"></div>
+              <span class="gallery-item-label">Mezze Spread</span>
+            </div>
+            <div class="gallery-item" data-label="Chef's Table">
+              <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80&auto=format&fit=crop" alt="Chef's Table" class="parallax-img gallery-img" loading="lazy" />
+              <div class="gallery-item-overlay"></div>
+              <span class="gallery-item-label">Chef's Table</span>
+            </div>
+            <div class="gallery-item" data-label="Cedar Lounge">
+              <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&q=80&auto=format&fit=crop" alt="Cedar Lounge" class="parallax-img gallery-img" loading="lazy" />
+              <div class="gallery-item-overlay"></div>
+              <span class="gallery-item-label">Cedar Lounge</span>
+            </div>
+          </div>
+
+          <div id="gallery-col-right" class="gallery-col gallery-col--offset">
+            <div class="gallery-item" data-label="Kunāfa Ritual">
+              <img src="https://images.unsplash.com/photo-1565299507177-b0ac66763828?w=600&q=80&auto=format&fit=crop" alt="Kunāfa Ritual" class="parallax-img gallery-img" loading="lazy" />
+              <div class="gallery-item-overlay"></div>
+              <span class="gallery-item-label">Kunāfa Ritual</span>
+            </div>
+            <div class="gallery-item" data-label="Wine Cellar">
+              <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=600&q=80&auto=format&fit=crop" alt="Wine Cellar" class="parallax-img gallery-img" loading="lazy" />
+              <div class="gallery-item-overlay"></div>
+              <span class="gallery-item-label">Wine Cellar</span>
+            </div>
+            <div class="gallery-item" data-label="Private Dining">
+              <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=600&q=80&auto=format&fit=crop" alt="Private Dining" class="parallax-img gallery-img" loading="lazy" />
+              <div class="gallery-item-overlay"></div>
+              <span class="gallery-item-label">Private Dining</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Lightbox -->
+      <div id="lightbox" role="dialog" aria-modal="true" aria-label="Gallery image">
+        <button id="lightbox-close" aria-label="Close lightbox">
+          <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+        <div class="lightbox-frame">
+          <img id="lightbox-img" src="" alt="" />
+        </div>
+        <p id="lightbox-label" class="lightbox-label"></p>
+      </div>
+
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+         STATS — three numbers with gold accents
+    ══════════════════════════════════════════════════════ -->
+    <section id="stats" class="stats-section">
+      <div class="container">
+        <div class="stats-grid">
+
+          <div class="stat-item">
+            <div class="stat-number" data-target="16" data-suffix="+">0+</div>
+            <div class="stat-label">Years of Tradition</div>
+            <div class="stat-rule accent-gradient"></div>
+          </div>
+
+          <div class="stat-item stat-item--mid">
+            <div class="stat-number" data-target="120" data-suffix="+">0+</div>
+            <div class="stat-label">Signature Dishes</div>
+            <div class="stat-rule accent-gradient"></div>
+          </div>
+
+          <div class="stat-item stat-item--right">
+            <div class="stat-number" data-target="10" data-suffix="K+">0K+</div>
+            <div class="stat-label">Happy Guests</div>
+            <div class="stat-rule accent-gradient"></div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+         FOOTER / CONTACT
+    ══════════════════════════════════════════════════════ -->
+    <footer id="contact" class="footer">
+      <div id="footer-gradient" aria-hidden="true"></div>
+      <div class="footer-noise" aria-hidden="true"></div>
+
+      <div class="footer-inner">
+
+        <!-- Scrolling marquee -->
+        <div class="footer-marquee">
+          <div id="marquee-track" class="marquee-track">
+            <span id="marquee-inner" class="marquee-text" aria-hidden="true">
+              TASTE LEBANON &bull;&nbsp; TASTE LEBANON &bull;&nbsp; TASTE LEBANON &bull;&nbsp; TASTE LEBANON &bull;&nbsp; TASTE LEBANON &bull;&nbsp; TASTE LEBANON &bull;&nbsp; TASTE LEBANON &bull;&nbsp; TASTE LEBANON &bull;&nbsp;
+            </span>
+            <span class="marquee-text" aria-hidden="true">
+              TASTE LEBANON &bull;&nbsp; TASTE LEBANON &bull;&nbsp; TASTE LEBANON &bull;&nbsp; TASTE LEBANON &bull;&nbsp; TASTE LEBANON &bull;&nbsp; TASTE LEBANON &bull;&nbsp; TASTE LEBANON &bull;&nbsp; TASTE LEBANON &bull;&nbsp;
+            </span>
+          </div>
+        </div>
+
+        <!-- Main CTA -->
+        <div class="footer-cta-wrap">
+          <p class="footer-cta-eyebrow">Make a Reservation</p>
+          <h2 class="footer-cta-heading">Join Our Table</h2>
+          <p class="footer-cta-sub">Open daily &bull; 123 Cedar Avenue, Downtown District</p>
+          <div class="footer-cta-btns">
+            <button data-modal="reservation" class="btn-primary btn-lg">Reserve Now</button>
+            <a href="tel:+12125550193" class="btn-ghost btn-lg">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+              </svg>
+              +1 (212) 555-0193
+            </a>
+          </div>
+        </div>
+
+        <!-- Info bar -->
+        <div class="footer-info">
+          <div class="footer-info-col">
+            <p class="footer-info-label">Address</p>
+            <p class="footer-info-val">123 Cedar Avenue<br>Downtown District</p>
+          </div>
+          <div class="footer-info-col">
+            <p class="footer-info-label">Hours</p>
+            <p class="footer-info-val">Mon–Thu: 12pm – 10pm<br>Fri–Sat: 12pm – 11pm<br>Sun: 12pm – 9pm</p>
+          </div>
+          <div class="footer-info-col">
+            <p class="footer-info-label">Contact</p>
+            <p class="footer-info-val">
+              <a href="tel:+12125550193">+1 (212) 555-0193</a><br>
+              <a href="mailto:reserve@lebnene.com">reserve@lebnene.com</a>
+            </p>
+          </div>
+        </div>
+
+        <!-- Footer bar -->
+        <div class="footer-bar">
+          <div class="footer-bar-brand">
+            <span class="footer-bar-name">LEBNENE</span>
+            <span class="footer-bar-divider"></span>
+            <span class="footer-bar-copy">&copy; 2026 LEBNENE. All rights reserved.</span>
+          </div>
+          <div class="footer-socials">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="LEBNENE on Instagram" class="social-btn">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="LEBNENE on Facebook" class="social-btn">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="https://tripadvisor.com" target="_blank" rel="noopener noreferrer" aria-label="LEBNENE on TripAdvisor" class="social-btn">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.006 4.295c-2.67 0-5.337.854-7.43 2.558H0l1.984 2.07a5.77 5.77 0 00-.754 2.874 5.82 5.82 0 005.82 5.82 5.79 5.79 0 003.57-1.23l1.386 1.44 1.386-1.44a5.79 5.79 0 003.57 1.23 5.82 5.82 0 005.82-5.82 5.77 5.77 0 00-.754-2.874L24 6.853h-4.576c-2.09-1.703-4.748-2.558-7.418-2.558zM6.95 9.045a3.752 3.752 0 110 7.505 3.752 3.752 0 010-7.505zm10.1 0a3.752 3.752 0 110 7.505 3.752 3.752 0 010-7.505zM6.95 10.94a1.857 1.857 0 100 3.714 1.857 1.857 0 000-3.714zm10.1 0a1.857 1.857 0 100 3.714 1.857 1.857 0 000-3.714z"/></svg>
+            </a>
+          </div>
+          <div class="footer-bar-status">
+            <span class="status-dot" aria-hidden="true"></span>
+            <span>Available for reservations</span>
+          </div>
+        </div>
+
+      </div>
+    </footer>
+
+    <!-- ══════════════════════════════════════════════════════
+         RESERVATION MODAL
+    ══════════════════════════════════════════════════════ -->
+    <div id="modal-reservation" class="modal-overlay" role="dialog" aria-modal="true" aria-label="Make a Reservation">
+      <div class="modal-panel">
+        <button class="modal-close" aria-label="Close reservation modal">
+          <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+
+        <div class="modal-header">
+          <p class="modal-eyebrow">LEBNENE Restaurant</p>
+          <h3 class="modal-title">Reserve a Table</h3>
+          <p class="modal-desc">We'll confirm your reservation within 2 hours by email or phone.</p>
+        </div>
+
+        <form id="reservation-form" novalidate class="form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="res-name" class="form-label">Full Name *</label>
+              <input type="text" id="res-name" name="name" placeholder="Your name" class="form-input" required autocomplete="name" />
+              <span class="form-error" role="alert">Please enter your name</span>
+            </div>
+            <div class="form-group">
+              <label for="res-guests" class="form-label">Guests *</label>
+              <select id="res-guests" name="guests" class="form-input" required>
+                <option value="">Select</option>
+                <option value="1">1 person</option>
+                <option value="2">2 people</option>
+                <option value="3">3 people</option>
+                <option value="4">4 people</option>
+                <option value="5">5 people</option>
+                <option value="6">6 people</option>
+                <option value="7-10">7–10 people</option>
+                <option value="10+">10+ people</option>
+              </select>
+              <span class="form-error" role="alert">Please select party size</span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="res-date" class="form-label">Date *</label>
+              <input type="date" id="res-date" name="date" class="form-input" required />
+              <span class="form-error" role="alert">Please select a date</span>
+            </div>
+            <div class="form-group">
+              <label for="res-time" class="form-label">Time *</label>
+              <select id="res-time" name="time" class="form-input" required>
+                <option value="">Select</option>
+                <option>12:00 PM</option><option>12:30 PM</option>
+                <option>1:00 PM</option><option>1:30 PM</option>
+                <option>2:00 PM</option><option>2:30 PM</option>
+                <option>6:00 PM</option><option>6:30 PM</option>
+                <option>7:00 PM</option><option>7:30 PM</option>
+                <option>8:00 PM</option><option>8:30 PM</option>
+                <option>9:00 PM</option><option>9:30 PM</option>
+                <option>10:00 PM</option>
+              </select>
+              <span class="form-error" role="alert">Please select a time</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="res-email" class="form-label">Email *</label>
+            <input type="email" id="res-email" name="email" placeholder="your@email.com" class="form-input" required autocomplete="email" />
+            <span class="form-error" role="alert">Please enter a valid email</span>
+          </div>
+
+          <div class="form-group">
+            <label for="res-phone" class="form-label">Phone</label>
+            <input type="tel" id="res-phone" name="phone" placeholder="+1 (555) 000-0000" class="form-input" autocomplete="tel" />
+          </div>
+
+          <div class="form-group">
+            <label for="res-notes" class="form-label">Special Requests</label>
+            <textarea id="res-notes" name="notes" placeholder="Dietary requirements, celebrations, seating preferences…" class="form-input form-textarea" rows="3"></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary btn-lg btn-full">Confirm Reservation</button>
+
+          <p class="form-policy">
+            By reserving you agree to our
+            <button id="cancellation-policy-btn" type="button" class="form-policy-link">cancellation policy</button>.
+          </p>
+        </form>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         FULL MENU MODAL
+    ══════════════════════════════════════════════════════ -->
+    <div id="modal-full-menu" class="modal-overlay modal-overlay--top" role="dialog" aria-modal="true" aria-label="Full Menu">
+      <div class="modal-panel modal-panel--wide">
+        <button class="modal-close" aria-label="Close menu modal">
+          <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+
+        <div class="modal-header">
+          <p class="modal-eyebrow">LEBNENE Restaurant</p>
+          <h3 class="modal-title">Our Menu</h3>
+          <p class="modal-desc">All dishes prepared daily with fresh, seasonal ingredients.</p>
+        </div>
+
+        <div id="menu-tabs" class="menu-tabs">
+          <button class="menu-tab active" data-tab="mezze">Mezze</button>
+          <button class="menu-tab" data-tab="mains">Mains</button>
+          <button class="menu-tab" data-tab="grill">Grill</button>
+          <button class="menu-tab" data-tab="desserts">Desserts</button>
+          <button class="menu-tab" data-tab="drinks">Drinks</button>
+        </div>
+
+        <div class="menu-tab-content" data-content="mezze">
+          <div class="menu-item-row"><div><h4>Hummus Classique</h4><p>Freshly ground chickpeas, tahini, extra-virgin olive oil, warm pita</p></div><span>$12</span></div>
+          <div class="menu-item-row"><div><h4>Moutabal</h4><p>Smoky grilled aubergine, tahini, pomegranate, parsley</p></div><span>$14</span></div>
+          <div class="menu-item-row"><div><h4>Fattoush Garden</h4><p>Heirloom tomatoes, cucumber, radish, sumac, crispy pita</p></div><span>$16</span></div>
+          <div class="menu-item-row"><div><h4>Kibbeh Royale</h4><p>Lamb &amp; pine nut croquettes, pomegranate reduction, yogurt dip</p></div><span>$28</span></div>
+          <div class="menu-item-row"><div><h4>Warak Dawali</h4><p>Vine leaves, herbed rice, lemon confit oil, pomegranate</p></div><span>$18</span></div>
+          <div class="menu-item-row"><div><h4>Sambousek</h4><p>Golden pastry, spiced lamb, toasted pine nuts, mint yogurt</p></div><span>$16</span></div>
+          <div class="menu-item-row"><div><h4>Cheese &amp; Za'atar Manaqeesh</h4><p>Stone-baked flatbread, Akkawi cheese, wild za'atar blend</p></div><span>$14</span></div>
+        </div>
+
+        <div class="menu-tab-content hidden" data-content="mains">
+          <div class="menu-item-row"><div><h4>Freekeh Chicken</h4><p>Slow-roasted half chicken, smoked green wheat, toasted almonds, caramelised onion</p></div><span>$38</span></div>
+          <div class="menu-item-row"><div><h4>Sea Bass Tarator</h4><p>Grilled sea bass fillet, tahini sauce, pine nuts, fresh herbs, lemon</p></div><span>$48</span></div>
+          <div class="menu-item-row"><div><h4>Lamb Ouzi</h4><p>12-hour slow-cooked shoulder, saffron rice, yogurt, toasted nuts</p></div><span>$58</span></div>
+          <div class="menu-item-row"><div><h4>Vegetarian Mezze Plate</h4><p>Seven seasonal mezze, warm bread basket, seasonal pickles</p></div><span>$32</span></div>
+          <div class="menu-item-row"><div><h4>Chicken Shawarma</h4><p>Spit-roasted chicken, garlic sauce, pickled vegetables, fresh pita</p></div><span>$26</span></div>
+        </div>
+
+        <div class="menu-tab-content hidden" data-content="grill">
+          <div class="menu-item-row"><div><h4>Mixed Grill <span class="menu-item-badge">Chef's Pick</span></h4><p>Kafta, shish taouk, lamb chops, charcoal garlic sauce, grilled vegetables</p></div><span>$52</span></div>
+          <div class="menu-item-row"><div><h4>Kafta Mashwi</h4><p>Charcoal-grilled spiced lamb mince, parsley, onion, tomato salsa</p></div><span>$34</span></div>
+          <div class="menu-item-row"><div><h4>Shish Taouk</h4><p>Marinated chicken skewers, toum garlic sauce, pickled chilli</p></div><span>$32</span></div>
+          <div class="menu-item-row"><div><h4>Lamb Chops</h4><p>Frenched lamb cutlets, seven-spice marinade, mint yogurt</p></div><span>$46</span></div>
+          <div class="menu-item-row"><div><h4>Halloumi Grill</h4><p>Grilled Cyprus halloumi, za'atar oil, pomegranate, fresh mint</p></div><span>$22</span></div>
+        </div>
+
+        <div class="menu-tab-content hidden" data-content="desserts">
+          <div class="menu-item-row"><div><h4>Kunāfa Cream <span class="menu-item-badge">Signature</span></h4><p>Shredded kataifi pastry, ashta clotted cream, orange blossom syrup, pistachio</p></div><span>$18</span></div>
+          <div class="menu-item-row"><div><h4>Baklava Royale</h4><p>Layered filo pastry, wildflower honey, pistachios, cardamom</p></div><span>$16</span></div>
+          <div class="menu-item-row"><div><h4>Maamoul</h4><p>Date &amp; walnut-filled semolina cookies, rose water glaze, pistachio dust</p></div><span>$14</span></div>
+          <div class="menu-item-row"><div><h4>Muhallabieh</h4><p>Rose water milk pudding, pistachio, candied rose petals</p></div><span>$14</span></div>
+          <div class="menu-item-row"><div><h4>Chocolate Arak Mousse</h4><p>Dark chocolate, arak liqueur, orange zest, sea salt</p></div><span>$16</span></div>
+        </div>
+
+        <div class="menu-tab-content hidden" data-content="drinks">
+          <div class="menu-item-row"><div><h4>Jallab</h4><p>Rose water, grape juice, pine nuts, ice — non-alcoholic</p></div><span>$10</span></div>
+          <div class="menu-item-row"><div><h4>Fresh Mint Lemonade</h4><p>Fresh squeezed lemon, mint, sugar cane, sparkling option</p></div><span>$10</span></div>
+          <div class="menu-item-row"><div><h4>Layali Lubnan Cocktail</h4><p>Arak, citrus, pomegranate reduction, rose water, egg white</p></div><span>$18</span></div>
+          <div class="menu-item-row"><div><h4>Lebanese Arak</h4><p>Traditional anise spirit, chilled water, ice — 45 min serving ritual</p></div><span>$16</span></div>
+          <div class="menu-item-row"><div><h4>Khoury Estate Red</h4><p>Bekaa Valley, Cabernet Sauvignon blend, 2021</p></div><span>$14 / glass</span></div>
+          <div class="menu-item-row"><div><h4>Arabic Coffee</h4><p>Cardamom-spiced qahwa, served with dates</p></div><span>$8</span></div>
+        </div>
+
+        <div class="modal-footer-btns">
+          <button id="menu-modal-reserve" class="btn-primary btn-lg">Reserve a Table</button>
+          <button class="modal-close btn-ghost btn-lg">Close Menu</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         DISH DETAIL MODAL
+    ══════════════════════════════════════════════════════ -->
+    <div id="modal-dish" class="modal-overlay" role="dialog" aria-modal="true" aria-label="Dish detail">
+      <div class="modal-panel modal-panel--dish">
+        <button class="modal-close modal-close--dish" aria-label="Close dish detail">
+          <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+        <div id="dish-img-wrap" class="dish-img-wrap">
+          <img id="dish-img" src="" alt="" class="dish-img" />
+          <div class="dish-img-overlay" aria-hidden="true"></div>
+          <span id="dish-badge" class="dish-badge"></span>
+        </div>
+        <div class="dish-body">
+          <div class="dish-header">
+            <h3 id="dish-name" class="dish-name"></h3>
+            <span id="dish-price" class="dish-price"></span>
+          </div>
+          <p id="dish-short" class="dish-short"></p>
+          <p id="dish-desc" class="dish-desc"></p>
+          <button id="dish-reserve-btn" class="btn-primary btn-lg btn-full">Reserve a Table ↗</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         TOAST — success / info notification
+    ══════════════════════════════════════════════════════ -->
+    <div id="toast" role="status" aria-live="polite" class="toast">
+      <span class="toast-icon" aria-hidden="true">
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+      </span>
+      <span id="toast-msg" class="toast-msg"></span>
+    </div>
+
+    <!-- CDN dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <!-- App scripts -->
+    <script src="js/loading.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/hero.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/gallery.js"></script>
+    <script src="js/contact.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
